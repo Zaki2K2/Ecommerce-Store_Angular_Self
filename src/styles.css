@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset any default margins/paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure html and body occupy the full height */
+html, body {
+  height: 100%;
+}
+
+/* Ensure the app root spans the full height of the viewport */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Header styling to stick at the top */
+header,app-header {
+  flex-shrink: 0; /* Prevent header from shrinking */
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Footer styling to stick at the bottom */
+app-footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+/* Main content adjusts dynamically */
+div {
+  flex: 1; /* Fills remaining space between header and footer */
+  padding: 20px;
+  overflow: auto; /* Add scroll if content overflows */
+}

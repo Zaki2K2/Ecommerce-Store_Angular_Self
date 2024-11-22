@@ -1,0 +1,74 @@
+/* Footer styling */
+.footer {
+  background-color: #333; /* Dark background for the footer */
+  color: white; /* Text color */
+  padding: 20px; /* Space around content */
+  width: 100%; /* Full width footer */
+  box-sizing: border-box; /* Include padding in total width */
+  display: flex;
+  justify-content: center; /* Center the footer content */
+  align-items: center; /* Align items vertically */
+}
+
+/* Footer navigation styling */
+.footer .nav {
+  display: flex;
+  justify-content: space-between; /* Space between nav links and social icons */
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  width: 100%; /* Full width navigation inside footer */
+  max-width: 1200px; /* Optional: limit the footer content width */
+}
+
+/* Footer navigation links */
+.footer .nav ul {
+  display: flex;
+  gap: 20px; /* Add space between links */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer .nav ul a {
+  color: white; /* White text for links */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Adjust font size */
+}
+
+.footer .nav ul a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Social links styling */
+.footer .social-links {
+  display: flex;
+  gap: 10px; /* Space between social icons */
+}
+
+.footer .social-links .social-icon {
+  color: white; /* Social icon color */
+  font-size: 20px; /* Adjust size of icons */
+  text-decoration: none;
+}
+
+.footer .social-links .social-icon:hover {
+  color: #ddd; /* Lighter color on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .footer .nav {
+    flex-direction: column; /* Stack nav and social links */
+    text-align: center; /* Center-align content */
+  }
+
+  .footer .nav ul {
+    flex-direction: column; /* Stack links vertically */
+    gap: 10px; /* Adjust spacing for vertical layout */
+  }
+
+  .footer .social-links {
+    margin-top: 15px; /* Add space between nav links and social icons */
+    justify-content: center;
+  }
+}

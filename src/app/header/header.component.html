@@ -1,0 +1,34 @@
+<header class="header">
+  <nav class="nav">
+      <h1>E-Commerce</h1>
+      <ul>
+          <li><a href="#" routerLinkActive="active">Dashboard</a></li>
+          <li><a href="#" (click)="openForm($event)">Contact Us</a></li>
+          <li>
+              <a href="#" class="cart-link">
+                  <i class="bi bi-cart"></i> Cart(0)
+              </a>
+          </li>
+      </ul>
+  </nav>
+</header>
+
+<main>
+  <div *ngIf="isFormVisible" class="contact-form">
+      <button class="close-btn" (click)="closeForm()">X</button>
+
+      <form (ngSubmit)="submitForm()">
+          <label for="name">Name:</label>
+          <input type="text" id="name" [(ngModel)]="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" required />
+
+          <label for="message">Message:</label>
+          <textarea id="message" [(ngModel)]="message" name="message" required></textarea>
+
+          <button type="submit">Submit</button>
+      </form>
+  </div>  
+
+</main>

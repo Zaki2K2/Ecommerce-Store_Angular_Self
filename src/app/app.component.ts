@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from './header/header.component';
 import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [HeaderComponent, RouterOutlet, FooterComponent, DashboardComponent],
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-ecommerce-store';
+  title = 'E-Commerce';
 }
