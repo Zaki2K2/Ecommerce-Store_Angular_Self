@@ -1,11 +1,20 @@
-
-<div *ngIf="products && products.length > 0; else noProducts">
+<div class="product-container" *ngIf="products && products.length > 0; else noProducts">
   <div class="product-card" *ngFor="let product of products">
     <img [src]="product.thumbnail" alt="{{ product.title }}" class="product-image" />
     <h2>{{ product.title }}</h2>
-    <p>{{ product.description }}</p>
     <p><strong>Price:</strong> ${{ product.price }}</p>
     <p><strong>Category:</strong> {{ product.category }}</p>
+    <div class="button-container">
+      <!-- View Details Button -->
+      <button class="details-button secondary-button" (click)="goToDetails(product.id)">
+        <i class="fa fa-info-circle"></i> View Details
+      </button>
+
+      <!-- Add to Cart Button -->
+      <button class="add-to-cart-button success-button" (click)="addToCart(product)">
+        <i class="fa fa-cart-plus"></i> Add to Cart
+      </button>
+    </div>
   </div>
 </div>
 

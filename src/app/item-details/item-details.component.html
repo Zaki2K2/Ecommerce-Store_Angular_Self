@@ -1,0 +1,26 @@
+<div *ngIf="product" class="product-details-container">
+  <h1>{{ product.title }}</h1>
+  <img [src]="product.thumbnail" alt="{{ product.title }}" class="product-image-large" />
+  <p>{{ product.description }}</p>
+  <p><strong>Price:</strong> ${{ product.price }}</p>
+  <p><strong>Category:</strong> {{ product.category }}</p>
+
+  <!-- Add to Cart Button -->
+  <button class="add-to-cart-button" (click)="addToCart()">
+    <i class="fa fa-shopping-cart"></i> Add to Cart
+  </button>
+
+  <!-- More Products Button -->
+  <button class="more-products-button" (click)="goToDashboard()">
+    <i class="fa fa-arrow-left"></i> More Products
+  </button>
+</div>
+
+<div *ngIf="!product">
+  <p>Loading product details...</p>
+</div>
+
+<!-- Confirmation Message -->
+<div *ngIf="cartConfirmationMessage" class="confirmation-message">
+  {{ cartConfirmationMessage }}
+</div>

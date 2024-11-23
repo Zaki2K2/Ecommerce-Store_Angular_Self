@@ -1,27 +1,49 @@
-import { Component } from '@angular/core';
-import { ContactComponent } from '../contact/contact.component';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [FormsModule, NgIf],
   templateUrl: './header.component.html',
+  standalone: true,
+  imports: [FormsModule, NgIf],
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  // Variable to manage the visibility of the form
+export class HeaderComponent implements OnInit, OnDestroy {
   isFormVisible = false;
+  totalItems: number = 0;
+  private cartSubscription!: Subscription;  // To hold the subscription
+  private cartUpdateInterval: any; // To hold the interval ID
 
   // Form fields for the contact form
   name: string = '';
   email: string = '';
   message: string = '';
 
+  constructor(private cartService: CartService, private router: Router) {}
+
+  ngOnInit(): void {
+    // Initial cart count
+    this.updateCartCount();
+
+    // Subscribe to cart updates from the CartService
+    this.cartSubscription = this.cartService.getCartUpdates().subscribe(count => {
+      this.totalItems = count; // Update the total items count whenever cart is updated
+    });
+
+    // Update cart count every 3 seconds
+    this.cartUpdateInterval = setInterval(() => {
+      this.updateCartCount(); // Update the cart count periodically
+    }, 3000);
+  }
+
   // Method to open the contact form
   openForm(event: Event) {
-    event.preventDefault();  // Prevent default link behavior (navigation)
-    this.isFormVisible = true;  // Set form visibility to true
+    event.preventDefault();
+    this.isFormVisible = true;
   }
 
   closeForm() {
@@ -35,16 +57,37 @@ export class HeaderComponent {
       message: this.message
     };
 
+    // Save the form data to localStorage
     localStorage.setItem('contactFormData', JSON.stringify(formData));
 
     console.log('Form submitted with data:', formData);
-
     alert('Form submitted and data saved to localStorage!');
 
+    // Clear form fields
     this.name = '';
     this.email = '';
     this.message = '';
 
     this.closeForm();
+  }
+
+  // Method to update the cart count
+  updateCartCount(): void {
+    this.totalItems = this.cartService.getCartCount();  // Get the current cart count from CartService
+  }
+
+  // Method to navigate to the Cart page
+  goToCart(): void {
+    this.router.navigate(['/cart']);
+  }
+
+  // Clean up interval and subscription on component destroy
+  ngOnDestroy(): void {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe(); // Unsubscribe to avoid memory leaks
+    }
+    if (this.cartUpdateInterval) {
+      clearInterval(this.cartUpdateInterval); // Clear interval to avoid memory leaks
+    }
   }
 }

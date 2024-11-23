@@ -1,0 +1,55 @@
+.product-details-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+}
+
+.product-image-large {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+/* General Button Styles */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, transform 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+
+  /* gap: 10px; Space between icon and text */
+}
+
+/* Success Button Styles (Add to Cart) */
+.add-to-cart-button {
+  background-color: #28a745; /* Green background */
+  color: white;
+  border: 1px solid #28a745;
+  margin-right: 2px;
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+/* More Products Button (Redirect to Dashboard) */
+.more-products-button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: 1px solid #007bff;
+  margin-left: 2px;
+
+}
+
+.more-products-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scale effect */
+}

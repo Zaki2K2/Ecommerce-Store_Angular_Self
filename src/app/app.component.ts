@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  imports: [HeaderComponent, RouterOutlet, FooterComponent, DashboardComponent],
+  imports: [HeaderComponent, RouterOutlet, FooterComponent],
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {

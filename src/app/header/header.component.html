@@ -5,10 +5,15 @@
           <li><a href="#" routerLinkActive="active">Dashboard</a></li>
           <li><a href="#" (click)="openForm($event)">Contact Us</a></li>
           <li>
-              <a href="#" class="cart-link">
-                  <i class="bi bi-cart"></i> Cart(0)
-              </a>
+            <a class="cart-link" (click)="goToCart()">
+              <i class="bi bi-cart"></i> <!-- Cart icon -->
+              Go to Cart
+              <span *ngIf="totalItems > 0" class="cart-badge">{{ totalItems }}</span>  <!-- Cart item count -->
+            </a>
           </li>
+
+
+
       </ul>
   </nav>
 </header>
@@ -29,6 +34,5 @@
 
           <button type="submit">Submit</button>
       </form>
-  </div>  
-
+  </div>
 </main>
