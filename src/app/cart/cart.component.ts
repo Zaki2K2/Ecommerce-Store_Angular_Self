@@ -10,13 +10,13 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cart: any[] = [];  // Array to hold the items in the cart
-  totalAmount: number = 0;  // To hold the total price of all items
+  cart: any[] = [];
+  totalAmount: number = 0;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.loadCart();  // Load cart items when the component initializes
+    this.loadCart();
   }
 
   // Load cart items from localStorage
