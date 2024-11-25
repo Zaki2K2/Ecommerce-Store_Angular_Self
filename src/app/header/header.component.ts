@@ -15,10 +15,11 @@ import { NgIf } from '@angular/common';
 export class HeaderComponent implements OnInit, OnDestroy {
   isFormVisible = false;
   totalItems: number = 0;
-  private cartSubscription!: Subscription;  // To hold the subscription
-  private cartUpdateInterval: any; // To hold the interval ID
 
-  // Form fields for the contact form
+  private cartSubscription!: Subscription;
+  private cartUpdateInterval: any;
+
+
   name: string = '';
   email: string = '';
   message: string = '';
@@ -26,18 +27,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
-    // Initial cart count
     this.updateCartCount();
 
-    // Subscribe to cart updates from the CartService
     this.cartSubscription = this.cartService.getCartUpdates().subscribe(count => {
-      this.totalItems = count; // Update the total items count whenever cart is updated
+
+      // Update the total items count whenever cart is updated
+
+      this.totalItems = count;
     });
 
+
+    //cartService.set
+
     // Update cart count every 3 seconds
-    this.cartUpdateInterval = setInterval(() => {
-      this.updateCartCount(); // Update the cart count periodically
-    }, 3000);
+    // this.cartUpdateInterval = setInterval(() => {
+    //   this.updateCartCount();
+    // }, 1000);
   }
 
   // Method to open the contact form
@@ -73,7 +78,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // Method to update the cart count
   updateCartCount(): void {
-    this.totalItems = this.cartService.getCartCount();  // Get the current cart count from CartService
+    // Get the current cart count from CartService
+    this.totalItems = this.cartService.getCartCount();
   }
 
   // Method to navigate to the Cart page

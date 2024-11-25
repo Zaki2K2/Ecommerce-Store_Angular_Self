@@ -5,8 +5,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  private cartKey = 'cart';  // Key for localStorage
-  private cartSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);  // To track cart items
+  // Key for localStorage
+  private cartKey = 'cart';
+  // To track cart items
+  private cartSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor() {
     // Initialize cart if it doesn't exist in localStorage

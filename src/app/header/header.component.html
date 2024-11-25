@@ -3,18 +3,20 @@
       <h1>E-Commerce</h1>
       <ul>
           <li><a href="#" routerLinkActive="active">Dashboard</a></li>
-          <li><a href="#" (click)="openForm($event)">Contact Us</a></li>
+          <li><a routerLink="/contact" >Contact Us</a></li>
+
+
+
           <li>
             <a class="cart-link" (click)="goToCart()">
-              <i class="bi bi-cart"></i> <!-- Cart icon -->
+              <i class="bi bi-cart"></i>
               Go to Cart
-              <span *ngIf="totalItems > 0" class="cart-badge">{{ totalItems }}</span>  <!-- Cart item count -->
+              <span *ngIf="totalItems > 0" class="cart-badge">{{ totalItems }}</span>
             </a>
           </li>
 
-
-
       </ul>
+
   </nav>
 </header>
 

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,9 +13,11 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   products: any[] = [];
-  cartItems: any[] = []; // Array to store items added to the cart
 
-  constructor(private http: HttpClient, private router: Router) {}
+  // Array to store items added to the cart
+  cartItems: any[] = [];
+
+  constructor(private http: HttpClient, private router: Router, private cartService: CartService) {}
 
   @Input() product!: {
     thumbnail: string;
@@ -45,6 +48,7 @@ export class DashboardComponent implements OnInit {
 
   addToCart(product: any): void {
     // Get existing cart items from local storage or initialize as an empty array
+    this.cartService.addItem(product);
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
     // Find the product by ID to ensure it’s added correctly
@@ -72,4 +76,5 @@ export class DashboardComponent implements OnInit {
     this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
     console.log('Cart items:', this.cartItems);
   }
+
 }

@@ -67,8 +67,10 @@
     gap: 10px; /* Adjust spacing for vertical layout */
   }
 
-  .footer .social-links {
-    margin-top: 15px; /* Add space between nav links and social icons */
-    justify-content: center;
+  .footer .social-links a {
+    color: #fff; /* Icon color */
+    text-decoration: none; /* Remove underlines from links */
+    font-size: 20px; /* Adjust size of the icons */
+    transition: color 0.3s ease; /* Smooth hover effect */
   }
 }
