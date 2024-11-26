@@ -11,11 +11,12 @@ import { CartService } from '../cart.service';
   imports: [NgIf, NgFor],
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
   products: any[] = [];
-
   // Array to store items added to the cart
   cartItems: any[] = [];
+
 
   constructor(private http: HttpClient, private router: Router, private cartService: CartService) {}
 
@@ -76,5 +77,5 @@ export class DashboardComponent implements OnInit {
     this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
     console.log('Cart items:', this.cartItems);
   }
-
 }
+
